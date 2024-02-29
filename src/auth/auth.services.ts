@@ -5,7 +5,7 @@ import {
   import { PrismaService } from '../prisma/prisma.service';
   import { AuthDto } from './dto';
   import * as argon from 'argon2';
-  import { PrismaClientKnownRequestError } from '@prisma/client/runtime';
+  import { Prisma } from '@prisma/client';
   import { JwtService } from '@nestjs/jwt';
   import { ConfigService } from '@nestjs/config';
   
@@ -33,7 +33,7 @@ import {
       } catch (error) {
         if (
           error instanceof
-          PrismaClientKnownRequestError
+          Prisma.PrismaClientKnownRequestError
         ) {
           if (error.code === 'P2002') {
             throw new ForbiddenException(
