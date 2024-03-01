@@ -1,6 +1,6 @@
 ## Description
 
-Nest Api Project
+Nest Api Project for event api
 
 ## Installation
 
