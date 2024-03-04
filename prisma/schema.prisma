@@ -23,7 +23,7 @@ model User {
 
   firstName String?
   lastName  String?
-  role  String?
+  role  String
 
   bookmarks Bookmark[]
 
@@ -45,14 +45,17 @@ model Bookmark {
   @@map("bookmarks")
 }
 
-model Bookmark {
+model Event {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   title       String
   description String?
-  link        String
+  date        String
+  status        String
+  centreId        String
+  centreName        String
 
   userId Int
   user   User @relation(fields: [userId], references: [id])
@@ -60,3 +63,20 @@ model Bookmark {
   @@map("bookmarks")
 }
 
+model Centre {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  name       String
+  location   String?
+  details    String
+  capacity   String
+  price      String
+  images     String
+
+  userId Int
+  user   User @relation(fields: [userId], references: [id])
+
+  @@map("bookmarks")
+}
